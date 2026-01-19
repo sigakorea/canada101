@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캐나다 조기유학 부모 교육 프로그램 - 캐나다 유학 101 클래스</title>
+    <style>
+        :root {
+            --primary: #c41e3a;
+            --primary-light: #fdf2f4;
+            --secondary: #FFA500;
+            --dark: #1a1a1a;
+            --gray-text: #666;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: var(--white);
+            word-break: keep-all;
+            scroll-behavior: smooth;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.2em;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--gray-text);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 120px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517486808906-6ca8b3f04844?auto=format&fit=crop&q=80&w=2000') center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 1em;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2em, 6vw, 4em);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-desc {
+            max-width: 850px;
+            margin: 0 auto 48px;
+            padding: 0 20px;
+        }
+
+        .hero-desc span {
+            display: block;
+            font-size: 1.35em;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .hero-desc .accent-text {
+            font-size: 1.6em;
+            font-weight: 800;
+            opacity: 1;
+            margin-top: 20px;
+            display: inline-block;
+            background: linear-gradient(transparent 60%, rgba(196, 30, 58, 0.6) 40%);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 20px 48px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2em;
+            box-shadow: 0 10px 20px rgba(196, 30, 58, 0.4);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(196, 30, 58, 0.5);
+            background: #e01b3c;
+        }
+
+        .btn-loading {
+            background-color: #999 !important;
+            cursor: not-allowed !important;
+        }
+
+        /* Section Commons */
+        section { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.6em; font-weight: 800; margin-bottom: 16px; }
+        .section-header p { color: var(--gray-text); font-size: 1.1em; }
+
+        /* Free Seminar Box */
+        .free-main {
+            background: var(--primary-light);
+            border-radius: 40px;
+            padding: 80px 60px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            border: 3px solid var(--primary);
+            position: relative;
+            box-shadow: 0 30px 60px rgba(196, 30, 58, 0.1);
+        }
+
+        .main-event-label {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2em;
+            box-shadow: 0 5px 15px rgba(196, 30, 58, 0.3);
+        }
+
+        .free-info h3 { font-size: 2.5em; margin-bottom: 10px; color: var(--primary); }
+        .core-msg { display: block; font-size: 1.4em; font-weight: 800; color: var(--primary); margin-bottom: 30px; }
+        .free-info ul { list-style: none; margin-bottom: 30px; }
+        .free-info li { margin: 15px 0; display: flex; align-items: flex-start; gap: 12px; font-weight: 600; font-size: 1.1em; }
+        .free-info li::before { content: "✓"; color: var(--primary); font-weight: bold; }
+
+        .schedule-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border-top: 8px solid var(--primary);
+        }
+
+        .schedule-item { margin-bottom: 25px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
+        .schedule-item:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+        .label { display: block; color: var(--primary); font-weight: 800; font-size: 0.9em; margin-bottom: 8px; text-transform: uppercase; }
+        .value { font-size: 1.25em; font-weight: 700; }
+
+        /* Pricing Area */
+        .pricing-section { text-align: center; margin-bottom: 50px; }
+        .price-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+        .price-card {
+            background: white;
+            padding: 25px 35px;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            min-width: 250px;
+        }
+        .price-card.featured { border: 2px solid var(--primary); background: var(--primary-light); }
+        .p-label { font-size: 0.9em; font-weight: 700; color: var(--gray-text); margin-bottom: 10px; display: block; }
+        .p-value { font-size: 1.6em; font-weight: 800; }
+        .p-note { font-size: 0.85em; color: var(--primary); font-weight: 600; }
+
+        /* Sessions Timeline */
+        .sessions-list { display: flex; flex-direction: column; gap: 40px; }
+        .session-row {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 40px;
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid #f0f0f0;
+            transition: var(--transition);
+        }
+        .session-row:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+
+        .session-num {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--dark);
+            color: white;
+            border-radius: 20px;
+            height: 140px;
+            font-weight: 800;
+        }
+        .session-num span { font-size: 0.9em; opacity: 0.7; margin-bottom: 5px; }
+        .session-num strong { font-size: 2.2em; }
+
+        .session-content h3 { font-size: 1.8em; margin-bottom: 10px; font-weight: 800; }
+        .session-content .session-msg { color: var(--secondary); font-weight: 700; font-size: 1.2em; display: block; margin-bottom: 25px; font-style: italic; }
+        
+        .session-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .meta-box { background: var(--light-bg); padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 1em; display: flex; align-items: center; gap: 10px; }
+
+        .sub-points { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding-top: 25px; border-top: 1px solid #eee; }
+        .sub-points li { list-style: none; font-size: 0.95em; color: #555; display: flex; align-items: flex-start; gap: 8px; }
+        .sub-points li::before { content: "•"; color: var(--primary); font-weight: bold; }
+
+        /* Instructor Section */
+        .instructor-card {
+            background: var(--light-bg);
+            border-radius: 40px;
+            padding: 80px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .instructor-photo-wrapper {
+            width: 100%;
+            border-radius: 24px;
+            aspect-ratio: 0.85;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .instructor-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .instr-name { font-size: 2.8em; font-weight: 800; margin-bottom: 8px; }
+        .instr-title { font-size: 1.4em; color: var(--primary); font-weight: 700; display: block; margin-bottom: 40px; }
+        
+        .instr-sections { display: grid; gap: 30px; }
+        .instr-item h4 { font-size: 1.2em; font-weight: 800; margin-bottom: 10px; color: var(--dark); display: flex; align-items: center; gap: 10px; }
+        .instr-item h4 .badge-icon { background: var(--primary); color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7em; }
+        .instr-item p { color: var(--gray-text); font-size: 1.05em; line-height: 1.8; padding-left: 34px; }
+
+        .instr-promise {
+            margin-top: 50px;
+            background: var(--primary);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .instr-promise blockquote { font-size: 1.4em; font-weight: 700; margin-bottom: 15px; }
+        .instr-promise p { opacity: 0.9; font-size: 1.1em; line-height: 1.6; }
+
+        /* Registration Form */
+        .reg-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 70px;
+            border-radius: 40px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.15);
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+        .field { margin-bottom: 30px; }
+        .field label { display: block; font-weight: 700; margin-bottom: 12px; font-size: 1em; }
+        .field input[type="text"], .field input[type="tel"], .field input[type="email"] {
+            width: 100%; padding: 18px; border: 2px solid #eee; border-radius: 14px; font-size: 1.05em; transition: var(--transition);
+        }
+        .field input:focus { border-color: var(--primary); outline: none; background: var(--primary-light); }
+
+        .grade-multi {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            background: var(--light-bg);
+            padding: 25px;
+            border-radius: 16px;
+        }
+        .check-btn {
+            display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.95em; font-weight: 600; padding: 8px; border-radius: 8px; transition: var(--transition);
+        }
+        .check-btn:hover { background: #e9ecef; }
+        .check-btn input { width: 20px; height: 20px; accent-color: var(--primary); }
+
+        .session-select { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
+        .session-opt {
+            padding: 20px 25px; border: 2px solid #eee; border-radius: 16px; display: flex; align-items: center; gap: 20px; cursor: pointer; transition: var(--transition);
+        }
+        .session-opt:hover { border-color: #ddd; }
+        .session-opt.active { border-color: var(--primary); background: var(--primary-light); }
+        .session-opt .info-txt strong { display: block; font-size: 1.1em; }
+        .session-opt .info-txt span { font-size: 0.9em; color: var(--gray-text); }
+
+        .privacy-agreement {
+            margin-top: 40px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: var(--light-bg);
+            border-radius: 10px;
+        }
+
+        /* Modal */
+        #msgModal {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px);
+        }
+        .modal-box { background: white; padding: 50px; border-radius: 30px; text-align: center; max-width: 500px; width: 100%; box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+        .modal-box h4 { font-size: 2em; color: var(--primary); margin-bottom: 20px; }
+        .modal-box p { font-size: 1.15em; color: #444; margin-bottom: 35px; line-height: 1.6; }
+
+        @media (max-width: 950px) {
+            .free-main, .instructor-card { grid-template-columns: 1fr; padding: 40px; }
+            .session-row { grid-template-columns: 1fr; padding: 35px; gap: 20px; }
+            .session-num { width: 100px; height: 100px; }
+            .form-row { grid-template-columns: 1fr; }
+            .reg-container { padding: 40px; }
+            .sub-points { grid-template-columns: 1fr; }
+            section { padding: 70px 0; }
+            .hero h1 { font-size: 2.2em; }
+            .hero-desc span { font-size: 1.1em; }
+            .hero-desc .accent-text { font-size: 1.3em; }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <nav>
+        <div class="container nav-content">
+            <a href="#top" class="logo">캐나다 유학 101</a>
+            <div class="nav-links">
+                <a href="#about">무료 세미나</a>
+                <a href="#paid">심화 클래스</a>
+                <a href="#instructor">대니쌤 프로필</a>
+                <a href="#register">지금 신청하기</a>
+            </div>
+            <a href="#register" class="btn-primary" style="padding: 10px 24px; font-size: 0.9em;">참석 예약</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <span class="hero-badge">캐나다 유학 101 클래스</span>
+            <h1>캐나다 조기유학 부모 교육 프로그램</h1>
+            
+            <div class="hero-desc">
+                <span>부동산 투자를 할 때도, 증권 투자를 할 때도 우리는 치열하게 공부합니다.</span>
+                <span>자녀의 미래, 가족의 삶, 그리고 막대한 시간과 비용이 투입되는 캐나다 유학은 어떻게 준비하시나요?</span>
+                <strong class="accent-text">이제는 제대로 공부하고 시작해야 할 때입니다.</strong>
+            </div>
+            
+            <a href="#register" class="btn-primary">무료 입문 세미나 신청하기</a>
+        </div>
+    </header>
+
+    <!-- Free Seminar -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>무료 공개 세미나</h2>
+                <p>본 과정의 가장 핵심적인 입문 세션으로 여러분을 초대합니다.</p>
+            </div>
+
+            <div class="free-main">
+                <div class="main-event-label">MAIN EVENT</div>
+                <div class="free-info">
+                    <h3>캐나다 교육 시스템 이해</h3>
+                    <span class="core-msg">"캐나다는 시스템으로 이해해야 한다"</span>
+                    <ul>
+                        <li>캐나다를 선택해야 하는 이유 (vs 미국·영국·호주)</li>
+                        <li>주요 주와 도시, 기후, 산업 이해</li>
+                        <li>주별 학제와 졸업장 시스템 비교 (OSSD, Dogwood, Alberta Diploma)</li>
+                        <li>학교 유형 4가지 (보딩스쿨, 공립, 사립, 국제학교)</li>
+                    </ul>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-item">
+                        <span class="label">DATE</span>
+                        <span class="value">2026년 1월 31일 (토)</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="label">TIME</span>
+                        <span class="value">오후 1:00 ~ 4:00 (3시간)</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="label">LOCATION</span>
+                        <span class="value">서울시 서초구 컨퍼런스룸</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#register" class="btn-primary">무료 세미나 신청하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paid Seminar Section -->
+    <section id="paid" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2>유료 심화 프로그램</h2>
+                <p>현장의 데이터와 노하우를 담은 3주간의 집중 로드맵 과정입니다.</p>
+            </div>
+
+            <div class="pricing-section">
+                <div class="price-grid">
+                    <div class="price-card">
+                        <span class="p-label">정상가</span>
+                        <span class="p-value">100,000원</span>
+                    </div>
+                    <div class="price-card featured">
+                        <span class="p-label">슈퍼 얼리버드 (7일 전)</span>
+                        <span class="p-value">30,000원</span>
+                        <span class="p-note">최대 70% 할인</span>
+                    </div>
+                    <div class="price-card">
+                        <span class="p-label">얼리버드 (3일 전)</span>
+                        <span class="p-value">50,000원</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sessions-list">
+                <div class="session-row">
+                    <div class="session-num">
+                        <span>SESSION</span>
+                        <strong>01</strong>
+                    </div>
+                    <div class="session-content">
+                        <h3>캐나다 학사 시스템 및 입시 로드맵</h3>
+                        <span class="session-msg">"학교 선택보다 졸업장 전략이다"</span>
+                        <div class="session-meta-grid">
+                            <div class="meta-box">📅 2월 7일 (토)</div>
+                            <div class="meta-box">🕐 오후 2시 - 4시</div>
+                            <div class="meta-box">📍 서울시 서초구</div>
+                        </div>
+                        <ul class="sub-points">
+                            <li>공립 교육청 시스템의 이해</li>
+                            <li>고교 학점제와 성적 평가 방식</li>
+                            <li>왜 OSSD가 유리한가?</li>
+                            <li>캐나다 대학 입시 시스템 완전 정복</li>
+                            <li>한국 부모가 흔히 오해하는 7가지</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="session-row">
+                    <div class="session-num">
+                        <span>SESSION</span>
+                        <strong>02</strong>
+                    </div>
+                    <div class="session-content">
+                        <h3>캐나다의 생활</h3>
+                        <span class="session-msg">"부모 동반은 감정이 아니라 전략이다"</span>
+                        <div class="session-meta-grid">
+                            <div class="meta-box">📅 2월 14일 (토)</div>
+                            <div class="meta-box">🕐 오후 2시 - 4시</div>
+                            <div class="meta-box">📍 서울시 서초구</div>
+                        </div>
+                        <ul class="sub-points">
+                            <li>캐나다 문화와 학생 적응 현실</li>
+                            <li>부모 동반의 장점과 실제 성과 데이터</li>
+                            <li>홈스테이, 가디언 시스템의 현실과 한계</li>
+                            <li>부모 동반 vs 비동반의 결정적 차이</li>
+                            <li>Culture Shock 시뮬레이션 게임</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="session-row">
+                    <div class="session-num">
+                        <span>SESSION</span>
+                        <strong>03</strong>
+                    </div>
+                    <div class="session-content">
+                        <h3>우리 가족 유학 플랜 및 예산 설계</h3>
+                        <span class="session-msg">"캐나다 유학은 시스템 설계와 매칭이다"</span>
+                        <div class="session-meta-grid">
+                            <div class="meta-box">📅 2월 21일 (토)</div>
+                            <div class="meta-box">🕐 오후 2시 - 4시</div>
+                            <div class="meta-box">📍 서울시 서초구</div>
+                        </div>
+                        <ul class="sub-points">
+                            <li>유학 목적 4분류와 가족 프로파일링</li>
+                            <li>캐나다 유학 매칭 5단계 프로세스</li>
+                            <li>유학 총 비용 시뮬레이션</li>
+                            <li>6개월 준비 로드맵</li>
+                            <li>우리 가족 맞춤 유학 플랜 완성</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section id="instructor">
+        <div class="container">
+            <div class="section-header">
+                <h2>강사 소개</h2>
+            </div>
+            <div class="instructor-card">
+                <div class="instructor-photo-wrapper">
+                    <!-- 구글 드라이브 보안 우회를 위해 thumbnail API 사용 (고화질 요청 sz=w1000) -->
+                    <img src="https://drive.google.com/thumbnail?id=1HOktaRT0iW9cBbS0oXU1si2gm8vupa2z&sz=w1000" 
+                         alt="대니쌤 (Danny Lee)" 
+                         referrerpolicy="no-referrer"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800';">
+                </div>
+                <div class="instructor-content">
+                    <h3 class="instr-name">대니쌤 (Danny Lee)</h3>
+                    <span class="instr-title">세 가지 관점의 통합 전문가</span>
+                    
+                    <div class="instr-sections">
+                        <div class="instr-item">
+                            <h4><span class="badge-icon">1</span> 유학생으로서</h4>
+                            <p>캐나다·호주에서 중·고등학교, 대학 과정 모두 직접 경험하며 유학생이 겪는 어려움과 필요를 몸소 체험했습니다.</p>
+                        </div>
+                        <div class="instr-item">
+                            <h4><span class="badge-icon">2</span> 학부모로서</h4>
+                            <p>두 자녀를 유치원부터 고등학교까지 캐나다에서 양육 중이며, 모든 교육 단계를 '부모의 자리'에서 실제 경험하고 있습니다.</p>
+                        </div>
+                        <div class="instr-item">
+                            <h4><span class="badge-icon">3</span> 전문가로서</h4>
+                            <p>캐나다 현지 유학원 운영, 10년 이상의 현장 경력, CCG 자격 #2559 보유. 2016년 이후 500명 이상의 학생을 성공적으로 배치했습니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="instr-promise">
+                        <blockquote>"성적만을 위한 유학이 아닌 '행복한 성공'을 위한 유학을 제안합니다."</blockquote>
+                        <p>현지에서 온 전문가로서 캐나다 교육 시스템과 생활에 대한 궁금증을 모두 해결해 드리는 자리가 되겠습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section id="register" style="background: var(--primary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">참가 신청하기</h2>
+                <p style="color: rgba(255,255,255,0.8);">아래 양식을 작성해 주시면 개별 안내 연락을 드립니다.</p>
+            </div>
+
+            <div class="reg-container">
+                <form id="masterForm">
+                    <div class="form-row">
+                        <div class="field">
+                            <label>성함 *</label>
+                            <input type="text" id="nameInput" name="name" placeholder="이름을 입력하세요" required>
+                        </div>
+                        <div class="field">
+                            <label>전화번호 *</label>
+                            <input type="tel" id="phoneInput" name="phone" placeholder="010-0000-0000" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>이메일 *</label>
+                        <input type="email" id="emailInput" name="email" placeholder="example@mail.com" required>
+                    </div>
+
+                    <div class="field">
+                        <label>자녀 학년 (다중 선택 가능) *</label>
+                        <div class="grade-multi">
+                            <label class="check-btn"><input type="checkbox" name="grade" value="초등"> 초등학생</label>
+                            <label class="check-btn"><input type="checkbox" name="grade" value="중1"> 중등 1학년</label>
+                            <label class="check-btn"><input type="checkbox" name="grade" value="중2"> 중등 2학년</label>
+                            <label class="check-btn"><input type="checkbox" name="grade" value="중3"> 중등 3학년</label>
+                            <label class="check-btn"><input type="checkbox" name="grade" value="고1"> 고등 1학년</label>
+                            <label class="check-btn"><input type="checkbox" name="grade" value="고2"> 고등 2학년</label>
+                            <label class="check-btn"><input type="checkbox" name="grade" value="고3"> 고등 3학년</label>
+                            <label class="check-btn"><input type="checkbox" name="grade" value="기타"> 기타</label>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>신청 세미나 선택 *</label>
+                        <div class="session-select">
+                            <label class="session-opt">
+                                <input type="checkbox" name="event" value="무료">
+                                <div class="info-txt">
+                                    <strong>무료 세미나: 캐나다 교육 시스템 이해 (1/31)</strong>
+                                    <span>입문자를 위한 필수 공개 세미나</span>
+                                </div>
+                            </label>
+                            <label class="session-opt">
+                                <input type="checkbox" name="event" value="유료">
+                                <div class="info-txt">
+                                    <strong>유료 세미나: 전문가 심화 클래스 (2/7~2/21)</strong>
+                                    <span>3주간의 집중 로드맵 및 맞춤형 플랜 완성 과정</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="privacy-agreement">
+                        <label class="check-btn" style="background: none; padding: 0;">
+                            <input type="checkbox" id="privacyCheck" required>
+                            <span>개인정보 수집 및 이용에 동의합니다 (필수)</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn-primary" style="width:100%; border:none; cursor:pointer; font-size: 1.3em;">참가 신청하기</button>
+                    <p style="text-align: center; margin-top: 25px; color: var(--gray-text); font-size: 0.95em;">
+                        * 참석자가 두 분인 경우 각각 등록해 주세요.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="msgModal">
+        <div class="modal-box">
+            <h4 id="mt">알림</h4>
+            <p id="mb">메시지 내용</p>
+            <button class="btn-primary" onclick="closeM()" style="width:100%; border:none; padding:15px;">확인</button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('msgModal');
+        const submitBtn = document.getElementById('submitBtn');
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzrBNYfb3v06rQJ5LaT7FnL0J98okCo-Zjw4fP1hys5R2eTIy-YNxOly7f8OfClr70/exec';
+
+        function openM(title, body) {
+            document.getElementById('mt').innerText = title;
+            document.getElementById('mb').innerText = body;
+            modal.style.display = 'flex';
+        }
+        function closeM() { modal.style.display = 'none'; }
+
+        document.querySelectorAll('.session-opt').forEach(opt => {
+            const input = opt.querySelector('input');
+            input.addEventListener('change', () => {
+                if(input.checked) opt.classList.add('active');
+                else opt.classList.remove('active');
+            });
+        });
+
+        document.getElementById('masterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('nameInput').value;
+            const phone = document.getElementById('phoneInput').value;
+            const email = document.getElementById('emailInput').value;
+            
+            const selectedGrades = Array.from(document.querySelectorAll('input[name="grade"]:checked')).map(cb => cb.value);
+            const selectedEvents = Array.from(document.querySelectorAll('input[name="event"]:checked')).map(cb => cb.value);
+            const privacy = document.getElementById('privacyCheck').checked;
+
+            if (selectedGrades.length === 0) {
+                openM('확인 필요', '자녀의 학년을 선택해 주세요.');
+                return;
+            }
+            if (selectedEvents.length === 0) {
+                openM('확인 필요', '신청하실 세미나 종류를 선택해 주세요.');
+                return;
+            }
+            if (!privacy) {
+                openM('동의 필요', '개인정보 수집 및 이용에 동의해 주세요.');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = '전송 중...';
+            submitBtn.classList.add('btn-loading');
+
+            const formData = {
+                name: name,
+                phone: phone,
+                email: email,
+                grades: selectedGrades.join(', '),
+                sessions: selectedEvents.join(', ')
+            };
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                openM('신청 완료!', `${name}님, 세미나 신청이 정상적으로 접수되었습니다.\n곧 담당자가 개별 안내 연락을 드리겠습니다.`);
+                this.reset();
+                document.querySelectorAll('.session-opt').forEach(o => o.classList.remove('active'));
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                openM('오류 발생', '전송 과정에서 문제가 발생했습니다. 다시 시도해 주세요.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = '참가 신청하기';
+                submitBtn.classList.remove('btn-loading');
+            });
+        });
+    </script>
+</body>
+</html>
